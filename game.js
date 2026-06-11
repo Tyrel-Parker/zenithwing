@@ -1005,8 +1005,8 @@ function drawNameEntry() {
     ctx.beginPath(); ctx.moveTo(sx, slotY+36); ctx.lineTo(sx-7,slotY+28); ctx.lineTo(sx+7,slotY+28); ctx.closePath(); ctx.fill();
   });
 
-  ctx.fillStyle = '#334455';
-  ctx.font = '5px "Press Start 2P", monospace';
+  ctx.fillStyle = '#8899BB';
+  ctx.font = '7px "Press Start 2P", monospace';
   ctx.fillText(isMobile ? 'UP/DN:LETTER  LT/RT:MOVE  TAP:NEXT' : 'UP/DN:LETTER  LT/RT:MOVE  ENTER:OK', cx, CH - 24);
   ctx.restore();
 }
