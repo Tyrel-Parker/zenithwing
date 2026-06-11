@@ -179,7 +179,8 @@ let lastScore = 0, messageTimer = null;
 // ─── LEADERBOARD ─────────────────────────────────────────────────────────────
 let leaderboard = JSON.parse(localStorage.getItem('zenithwing-lb') || '[]');
 const NAME_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ';
-let nameChars = ['A','A','A'], nameCursor = 0;
+const lastInitials = (localStorage.getItem('zenithwing-initials') || 'AAA').split('').slice(0, 3);
+let nameChars = [...lastInitials], nameCursor = 0;
 
 function qualifiesForLB(s) {
   return s > 0 && (leaderboard.length < 10 || s > leaderboard[leaderboard.length - 1].score);
@@ -199,7 +200,9 @@ function advanceNameCursor(dir) {
   nameCursor = Math.max(0, Math.min(2, nameCursor + dir));
 }
 function confirmName() {
-  addToLB(nameChars.join('').trimEnd() || '???', lastScore);
+  const name = nameChars.join('').trimEnd() || '???';
+  localStorage.setItem('zenithwing-initials', nameChars.join(''));
+  addToLB(name, lastScore);
   gameState = 'highscore';
 }
 
@@ -693,7 +696,7 @@ function hitPlayer() {
     setTimeout(() => {
       showMessage('');
       if (qualifiesForLB(lastScore)) {
-        nameChars = ['A','A','A']; nameCursor = 0;
+        nameChars = (localStorage.getItem('zenithwing-initials') || 'AAA').split('').slice(0, 3); nameCursor = 0;
         gameState = 'nameentry';
       } else {
         gameState = 'highscore';
