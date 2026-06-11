@@ -1006,7 +1006,7 @@ function drawNameEntry() {
   });
 
   ctx.fillStyle = '#8899BB';
-  ctx.font = '7px "Press Start 2P", monospace';
+  ctx.font = '9px "Press Start 2P", monospace';
   ctx.fillText(isMobile ? 'UP/DN:LETTER  LT/RT:MOVE  TAP:NEXT' : 'UP/DN:LETTER  LT/RT:MOVE  ENTER:OK', cx, CH - 24);
   ctx.restore();
 }
